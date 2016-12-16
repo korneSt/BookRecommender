@@ -20,6 +20,7 @@
     "babel-preset-stage-2": "^6.17.0",
     "babel-runtime": "^5.8.0",
     "css-loader": "^0.21.0",
+    "element-ui": "^1.0.7",
     "json-loader": "^0.5.4",
     "mocha": "^3.1.2",
     "mocha-loader": "^1.0.0",
@@ -33,6 +34,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "vue": "^2.0.3",
+    "vue-i18n": "^4.8.0",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.0.1",
     "vue-strap": "^1.1.29",

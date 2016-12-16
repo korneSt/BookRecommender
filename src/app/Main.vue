@@ -17,7 +17,6 @@ import Footer from './Footer.vue';
 
 import { mapActions, mapMutations } from 'vuex'
 
-
 export default {
   name: 'Main',
   components: {
@@ -26,16 +25,25 @@ export default {
     'techs': Techs,
     'footer-component': Footer
   },
-   methods: {
-      ...mapActions([
-        'getAllBooks'
-      ])
-   }
+  data() {
+    return {
+      
+    }
+  },
+  computed: {
+    books () {
+      return this.$store.state.books
+    }
+  },
+  methods: {
+    ...mapActions([
+      'getAllBooks'
+    ])
+  },
   mounted: function () {
-  this.$nextTick(function () {
-    // this.getBoards()
-    this.getComps()
-    
+    this.$nextTick(function () {
+      // this.getAllBooks();
+    })
   }
 };
 </script>

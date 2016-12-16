@@ -4,31 +4,36 @@
       Cooked with all these awesome technologies:
     </h2>
     <div class="techs">
-      <tech v-for="tech in techs" :tech="tech"></tech>
+      <tech v-for="book in books" :book="book"></tech>
     </div>
   </div>
 </template>
 
 <script>
-import Vue from 'vue';
-import VueResource from 'vue-resource';
-Vue.use(VueResource);
+
 import tech from './Tech.vue';
+import { mapActions, mapMutations } from 'vuex'
 
 export default {
   name: 'Techs',
   data() {
     return {
-      techs: []
     };
   },
+  computed: {
+    books () {
+      return this.$store.state.books
+    }
+  },
+   methods: {
+    ...mapActions([
+      'getAllBooks'
+    ])
+  },
   created() {
-    return this.$http
-      .get('./src/app/techs/techs.json')
-      .then(response => {
-        console.log(response.body)
-        this.techs = response.body;
-      });
+    this.$nextTick(function () {
+      this.getAllBooks();
+    })
   },
   components: {
     tech

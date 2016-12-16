@@ -1,13 +1,13 @@
 import * as types from './mutation-types';
-import { app } from '../index.js';
+import app from '../index.js';
 import auth from '../auth';
 
-const URL = 'localhost:3000/api/v1.0/';
+const URL = 'http://localhost:3000/api/v1.0/';
 
 
 export const getAllBooks = ({ commit }) => {
     app.$http.get(URL + 'books').then((response) => {
-    commit(types.GET_ALL_BOOKS, response);
+    commit(types.GET_ALL_BOOKS, response.body.value);
     }, (response) => {
         console.log(response);
     })
@@ -16,7 +16,7 @@ export const getAllBooks = ({ commit }) => {
 //BOARDS
 export const addBoard = (context, {board}) => {
     app.$http.post('http://localhost:3000/boards', board).then((response) => {
-        context.commit(types.ADD_BOARD, response.body)
+        context.commit(types.ADD_BOARD, response.body.value)
         app.$store.dispatch('addActivity', { action: 'added board', element: board.board_name })
     }, (response) => {
         console.log(response)

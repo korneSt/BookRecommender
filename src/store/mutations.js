@@ -4,11 +4,11 @@ import * as types from './mutation-types'
 
 
 export const state = {
-    books: {}
+    books: []
 }
 
 export const mutations = {
-    [types.GET_USER](state, books) {
+    [types.GET_ALL_BOOKS](state, books) {
         state.books = books
     },
     

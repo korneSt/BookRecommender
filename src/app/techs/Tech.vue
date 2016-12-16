@@ -1,17 +1,17 @@
 <template>
   <div class="tech">
-    <img class="tech-logo" v-bind:src="tech.logo"/>
+    <img class="tech-logo" v-bind:src="book.logo"/>
     <h3 class="tech-h3">
-      {{ tech.title }}
+      {{ book.title }}
     </h3>
-    <p>{{ tech.text1 }}</p>
-    <p>{{ tech.text2 }}</p>
+    <p>{{ book.text1 }}</p>
+    <p>{{ book.text2 }}</p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Tech',
-  props: ['tech']
+  props: ['book']
 };
 </script>

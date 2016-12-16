@@ -2,11 +2,11 @@
   <header class="header">
     <p class="header-title">
       <a href="https://github.com/FountainJS/generator-fountain-webapp" target="_blank">
-        Fountain Generator
+        Book Recommendations
       </a>
     </p>
     <p class="header-date">
-      Generated with FountainJS v0.6.0 on Wed Aug 10 2016 10:13:26 GMT+0200 (CEST)
+      {{ $t('header.info') }}
     </p>
   </header>
 </template>
