@@ -1,18 +1,26 @@
 <template>
-  <header class="header">
-    <p class="header-title">
-      <a href="https://github.com/FountainJS/generator-fountain-webapp" target="_blank">
-        Book Recommendations
-      </a>
-    </p>
-    <p class="header-date">
-      {{ $t('header.info') }}
-    </p>
+  <header>
+
+<el-menu theme="dark" default-active="1" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+  <el-menu-item index="1">Processing Center</el-menu-item>
+  <el-submenu index="2">
+    <template slot="title">Workspace</template>
+    <el-menu-item index="2-1">item one</el-menu-item>
+    <el-menu-item index="2-2">item two</el-menu-item>
+    <el-menu-item index="2-3">item three</el-menu-item>
+  </el-submenu>
+  <el-menu-item index="3">Orders</el-menu-item>
+</el-menu>
   </header>
 </template>
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  methods: {
+      handleSelect(key, keyPath) {
+        console.log(key, keyPath);
+      }
+  }
 };
 </script>

@@ -18,11 +18,13 @@ module.exports = {
     loaders: [
       // process *.vue files using vue-loader
       { test: /\.vue$/, loader: 'vue' },
-      { test: /\.css$/, loaders: [
+      {
+        test: /\.css$/, loaders: [
           'style',
-          'css',        ]
+          'css',]
       },
-      {test: /.json$/,
+      {
+        test: /.json$/,
         loaders: [
           'json'
         ]
@@ -30,7 +32,18 @@ module.exports = {
       // process *.js files using babel-loader
       // the exclude pattern is important so that we don't
       // apply babel transform to all the dependencies!
-      { test: /\.js$/, loader: 'babel', exclude: /node_modules/ }
+      { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?\S*)?$/,
+        loader: 'file-loader',
+        query: {
+          name: '[name].[ext]?[hash]'
+        }
+      }
     ]
   },
 
