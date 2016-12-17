@@ -2,7 +2,8 @@
   <div id="root">
     <header-component></header-component>
     <main>
-      <books></books>
+      <title-component></title-component>
+      <techs></techs>
     </main>
     <footer-component></footer-component>
   </div>
@@ -11,18 +12,19 @@
 <script>
 import Header from './Header.vue';
 import Title from './Title.vue';
-import Books from './techs/Books.vue';
+import Techs from './techs/Techs.vue';
 import Footer from './Footer.vue';
+
 import { mapActions, mapMutations } from 'vuex'
 
 export default {
-  name: 'Main',
+  name: 'Book',
   components: {
     'header-component': Header,
     'title-component': Title,
-    'books': Books,
+    'techs': Techs,
     'footer-component': Footer
-    },
+  },
   data() {
     return {
       

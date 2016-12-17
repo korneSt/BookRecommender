@@ -1,11 +1,9 @@
 <template>
-  <parallax class="parallax" src='/assets/books.jpg' height="300" speed="0.2">
+  <parallax class="parallax" src="/assets/books.jpg" :height="300" :speed="0.2">
     <div slot="loading">loading...</div>
     <div>
       <div>
-        <h2 class="title-h2">{{ $t('header.info') }}</h2>
-        <img class="title-logo" src="http://fountainjs.io/assets/imgs/yeoman.png"/>
-        <img class="title-logo" src="http://fountainjs.io/assets/imgs/fountain.png"/>
+         <books></books>
       </div>
     </div>
     </div>
