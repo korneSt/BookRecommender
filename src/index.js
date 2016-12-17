@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Main from './app/Main.vue';
+import BookList from './app/BookList.vue';
 import store from './store';
 
 
@@ -16,17 +17,24 @@ Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(VueI18n);
 
-const router = new VueRouter({
+export const router = new VueRouter({
   mode: 'history',
   routes: [
     {
       path: '/',
       components: {
         default: Main
-      }
+      },
+      children: [
+        {
+          path: 'books',
+          component: BookList
+        }
+      ]
     }
   ]
 });
+
 
 Vue.config.lang = 'en'
 
@@ -36,7 +44,8 @@ var locales = {
       title: 'Books recommendations',
       books: 'Books',
       myBooks: 'My Books',
-      rec: 'recommendations',
+      allBooks: 'All Books',
+      rec: 'Recommendations',
       info: 'Rate books and get great recommendations',
       acc: 'Account'
     }
@@ -45,6 +54,7 @@ var locales = {
     header: {
       title: 'Books recommendations',
       books: 'Books',
+      allBooks: 'All Books',
       myBooks: 'My Books',
       rec: 'recommendations',
       info: 'Oceniaj książki i ciesz się świetnymi rekomendacjami',

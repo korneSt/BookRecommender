@@ -1,49 +1,17 @@
 <template>
-  <div id="root">
-    <header-component></header-component>
-    <main>
-      <title-component></title-component>
-      <techs></techs>
-    </main>
-    <footer-component></footer-component>
+  <div class="tech">
+    <img class="tech-logo" v-bind:src="book.logo"/>
+    <h3 class="tech-h3">
+      {{ book.title }}
+    </h3>
+    <p>{{ book.text1 }}</p>
+    <p>{{ book.text2 }}</p>
   </div>
 </template>
 
 <script>
-import Header from './Header.vue';
-import Title from './Title.vue';
-import Techs from './techs/Techs.vue';
-import Footer from './Footer.vue';
-
-import { mapActions, mapMutations } from 'vuex'
-
 export default {
   name: 'Book',
-  components: {
-    'header-component': Header,
-    'title-component': Title,
-    'techs': Techs,
-    'footer-component': Footer
-  },
-  data() {
-    return {
-      
-    }
-  },
-  computed: {
-    books () {
-      return this.$store.state.books
-    }
-  },
-  methods: {
-    ...mapActions([
-      'getAllBooks'
-    ])
-  },
-  mounted: function () {
-    this.$nextTick(function () {
-      // this.getAllBooks();
-    })
-  }
+  props: ['book']
 };
 </script>

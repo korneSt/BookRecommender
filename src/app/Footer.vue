@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    Build with ♥ by Korel;
+    Build with ♥ by Kornel
   </footer>
 </template>
 
