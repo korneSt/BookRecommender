@@ -28,17 +28,27 @@ const router = new VueRouter({
   ]
 });
 
-Vue.config.lang = 'pl'
+Vue.config.lang = 'en'
 
 var locales = {
   en: {
     header: {
-      info: 'Rate books and get great recommendations'
+      title: 'Books recommendations',
+      books: 'Books',
+      myBooks: 'My Books',
+      rec: 'recommendations',
+      info: 'Rate books and get great recommendations',
+      acc: 'Account'
     }
   },
   pl: {
     header: {
-      info: 'Oceniaj książki i ciesz się świetnymi rekomendacjami'
+      title: 'Books recommendations',
+      books: 'Books',
+      myBooks: 'My Books',
+      rec: 'recommendations',
+      info: 'Oceniaj książki i ciesz się świetnymi rekomendacjami',
+      acc: 'Account'
     }
   }
 };

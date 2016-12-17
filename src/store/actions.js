@@ -7,7 +7,7 @@ const URL = 'http://localhost:3000/api/v1.0/';
 
 export const getAllBooks = ({ commit }) => {
     app.$http.get(URL + 'books').then((response) => {
-    commit(types.GET_ALL_BOOKS, response.body.value);
+    commit(types.GET_ALL_BOOKS, response.body);
     }, (response) => {
         console.log(response);
     })

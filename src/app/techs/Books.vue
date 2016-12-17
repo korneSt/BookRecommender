@@ -6,7 +6,7 @@
         <el-card :body-style="{ padding: '0px' }">
           <img src="/assets/book_diuna.jpg" class="image">
           <div style="padding: 14px;">
-            <span>{{ b.name }}</span>
+            <span>{{ b.title }}</span>
             <div class="bottom clearfix">
               <el-button type="text" class="button">Operating button</el-button>
             </div>
