@@ -13,6 +13,15 @@ export const getAllBooks = ({ commit }) => {
     })
 }
 
+export const getMyBooks = ({ commit }) => {
+    app.$http.get(URL + 'books/2').then((response) => {
+        console.log(response);
+    commit(types.GET_MY_BOOKS, response.body);
+    }, (response) => {
+        console.log(response);
+    })
+}
+
 //BOARDS
 export const addBoard = (context, {board}) => {
     app.$http.post('http://localhost:3000/boards', board).then((response) => {

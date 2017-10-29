@@ -3,8 +3,9 @@
     <header-component></header-component>
     <main>
       <books></books>
+      <br><br><br>
       <router-view></router-view>
-
+      <br><br><br>
     </main>
     <footer-component></footer-component>
   </div>

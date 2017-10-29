@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Main from './app/Main.vue';
 import BookList from './app/BookList.vue';
 import store from './store';
-
+import MyBooksList from './app/MyBooksList.vue';
 
 import './index.css';
 import VueRouter from 'vue-router';
@@ -29,6 +29,10 @@ export const router = new VueRouter({
         {
           path: 'books',
           component: BookList
+        },
+        {
+          path: 'mybooks',
+          component: MyBooksList
         }
       ]
     }
@@ -45,18 +49,18 @@ var locales = {
       books: 'Books',
       myBooks: 'My Books',
       allBooks: 'All Books',
-      rec: 'Recommendations',
+      rec: 'Quick recommendations',
       info: 'Rate books and get great recommendations',
       acc: 'Account'
     }
   },
   pl: {
     header: {
-      title: 'Books recommendations',
-      books: 'Books',
-      allBooks: 'All Books',
-      myBooks: 'My Books',
-      rec: 'recommendations',
+      title: 'Rekomendacje książek',
+      books: 'Książki',
+      allBooks: 'Wszystkie książki',
+      myBooks: 'Moje książki',
+      rec: 'Szybkie polecenie',
       info: 'Oceniaj książki i ciesz się świetnymi rekomendacjami',
       acc: 'Account'
     }

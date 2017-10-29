@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    Build with ♥ by Kornel
+    Build by Kornel
   </footer>
 </template>
 

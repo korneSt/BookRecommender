@@ -29,6 +29,12 @@ export default {
         if (key === '2-1') {
           router.push('books')
         }
+        if(key === '2-2') {
+          router.push('mybooks')
+        }
+        if (key === '2-3') {
+          router.push('quickrecommendations')
+        }
       }
   }
 };

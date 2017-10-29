@@ -1,6 +1,6 @@
 <template>
   <el-table
-    :data="books"
+    :data="books.filter(myBooksFilter)"
     border
     style="width: 100%">
     <el-table-column
@@ -24,8 +24,8 @@
       <div>
         <el-button
           size="small"
-          @click="handleGetRecommendations($index, row)">
-          Get book recommendations
+          @click="handleAdd($index, row)">
+          Add to my books
         </el-button>
         <el-button
           size="small"
@@ -42,7 +42,7 @@
 import { mapActions, mapMutations } from 'vuex'
 
 export default {
-  name: 'bookList',
+  name: 'mybooklist',
   data() {
     return {
       
@@ -55,14 +55,12 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getAllBooks'
+      'getMyBooks'
     ]),
-    handleRecommend(index, row) {
-      console.log(index, row);
-    },
-    handleGetRecommendations(index, row) {
-      console.log(index, row);
-    }
+    myBooksFilter: function(book) {
+        if (book.userId == 1)
+          return book;
+      },
   },
   mounted: function () {
     this.$nextTick(function () {
