@@ -3,7 +3,7 @@ import Main from './app/Main.vue';
 import BookList from './app/BookList.vue';
 import store from './store';
 import MyBooksList from './app/MyBooksList.vue';
-
+import QuickRecommendations from './app/QuickRecommendations.vue';
 import './index.css';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
@@ -33,6 +33,10 @@ export const router = new VueRouter({
         {
           path: 'mybooks',
           component: MyBooksList
+        },
+        {
+          path: 'quick-recommendations',
+          component: QuickRecommendations
         }
       ]
     }

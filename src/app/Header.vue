@@ -33,7 +33,7 @@ export default {
           router.push('mybooks')
         }
         if (key === '2-3') {
-          router.push('quickrecommendations')
+          router.push('quick-recommendations')
         }
       }
   }

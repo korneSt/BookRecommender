@@ -2,7 +2,7 @@
   <div id="root">
     <header-component></header-component>
     <main>
-      <books></books>
+      <books-component></books-component>
       <br><br><br>
       <router-view></router-view>
       <br><br><br>
@@ -23,7 +23,7 @@ export default {
   components: {
     'header-component': Header,
     'title-component': Title,
-    'books': Books,
+    'books-component': Books,
     'footer-component': Footer
   },
   data() {
