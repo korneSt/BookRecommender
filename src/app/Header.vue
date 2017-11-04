@@ -11,6 +11,12 @@
 
   </el-submenu>
   <el-menu-item index="3">{{ $t('header.acc') }}</el-menu-item>
+  <el-menu-item index="4" class="right">
+  <el-input  size="small" placeholder="Login" v-model="input" class="center"></el-input>
+  </el-menu-item>
+  <el-menu-item index="5" class="right">
+  <el-input  size="small" placeholder="Password" v-model="input" class="center"></el-input>
+  </el-menu-item>
 </el-menu>
   </header>
 </template>
@@ -20,6 +26,11 @@ import { router } from '../index.js'
 
 export default {
   name: 'Header',
+  data() {
+    return {
+      input: ''
+    }
+  },
   methods: {
       handleSelect(key, keyPath) {
         
@@ -39,3 +50,13 @@ export default {
   }
 };
 </script>
+
+<style>
+.right {
+  float: right!important;
+  width: 12em;
+}
+.center {
+display: inline-flex!important;
+}
+</style>

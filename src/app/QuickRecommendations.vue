@@ -16,6 +16,16 @@
             </span>
         </li>
     </ul>
+    <div>
+        <el-button type="primary" v-on:click="getRec">Get Recommendations</el-button>
+    </div>
+     <ul id="recommendedBooks">
+        <li v-for="b in recommendedBooks" :key="b.id" >
+            <span :class="classObject"> 
+                {{ b.title }}
+            </span>
+        </li>
+    </ul>
     </div>
 </template>
 <script>
@@ -29,6 +39,7 @@ export default {
     return {
         selectedBook: {},
         bookListForRec: [],
+        bookListForRecIds: [],
         styleObject: {
             cursor: 'pointer'  
         }
@@ -36,7 +47,10 @@ export default {
   },
   computed: {
     books () {
-      return this.$store.state.books
+      return this.$store.state.books;
+    },
+    recommendedBooks() {
+        return this.$store.state.recommendedBooks;
     },
     classObject: function () {
     return {
@@ -50,19 +64,35 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getMyBooks'
+      'getMyBooks',
+      'getQuickRecommendation'
     ]),
     myBooksFilter: function(book) {
         if (book.userId == 1)
           return book;
       },
+    getRec() {
+        let request ='';
 
+        for (var i = 0; i < this.bookListForRec.length; i++) {
+            request = request + this.bookListForRec[i].id + ',';
+        }
+        request = request.slice(0, -1);
+        console.log('r', request);
+        this.getQuickRecommendation({bookIds: request});
+    },
     addToRecommendationBox(book) {
+                    this.selectedBook = book;
+
         if (this.bookListForRec.indexOf(book) !== -1) {
-            this.bookListForRec.pop(book);
+            console.log(book)
+            // this.bookListForRec.pop(book);
+            this.bookListForRec.splice(this.bookListForRec.indexOf(book),1);
+            this.bookListForRecIds.splice(this.bookListForRecIds.indexOf(book.id),1);
+            // this.selectedBook = {};
         } else {
-            this.selectedBook = book;
             this.bookListForRec.push(book);
+            this.bookListForRecIds.push(book.id);
         }
         console.log(book.id);
     }

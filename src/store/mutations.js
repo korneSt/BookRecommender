@@ -5,22 +5,29 @@ import * as types from './mutation-types'
 
 export const state = {
     books: [],
-    myBooks: []
+    myBooks: [],
+    recommendedBooks: []
 }
 
 export const mutations = {
     [types.GET_ALL_BOOKS](state, books) {
-        state.books = books
+        state.books = books;
     },
     [types.GET_MY_BOOKS](state, books) {
-        state.myBooks = books
+        state.myBooks = books;
     },
+    [types.GET_QUICK_RECOMM](state, books) {
+        state.recommendedBooks = books;
+    }
     
 }
 
 export const getters = {
      fiveBooks: state => {
       return state.books.reverse().slice(3);
+    },
+    recommendedBooks: state => {
+        return state.recommendedBooks;
     }
 }
 

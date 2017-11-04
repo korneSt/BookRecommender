@@ -12,6 +12,15 @@ export const getAllBooks = ({ commit }) => {
         console.log(response);
     })
 }
+export const getQuickRecommendation = (context, {bookIds}) => {
+    console.log(bookIds);
+    app.$http.get(URL + 'recommendationItem?itemIds=' + bookIds +
+    '&numberOfResults=2&minimalScore=0').then((response) => {
+    context.commit(types.GET_QUICK_RECOMM, response.body);
+    }, (response) => {
+        console.log(response);
+    })
+}
 
 export const getMyBooks = ({ commit }) => {
     app.$http.get(URL + 'books/2').then((response) => {
