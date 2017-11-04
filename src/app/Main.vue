@@ -1,13 +1,10 @@
 <template>
-  <div id="root">
-    <header-component></header-component>
-    <main>
+  <div>
       <books-component></books-component>
+
       <br><br><br>
-      <router-view></router-view>
+      HELLO
       <br><br><br>
-    </main>
-    <footer-component></footer-component>
   </div>
 </template>
 
@@ -43,6 +40,7 @@ export default {
   },
   mounted: function () {
     this.$nextTick(function () {
+
       // this.getAllBooks();
     })
   }

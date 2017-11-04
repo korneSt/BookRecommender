@@ -10,12 +10,14 @@ import VueResource from 'vue-resource';
 import VueI18n from 'vue-i18n';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css'
-
+import auth from './auth'
+import Header from './app/Header.vue';
 
 Vue.use(ElementUI)
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(VueI18n);
+// Vue.http.headers.common['Access-Control-Allow-Origin'] = '*';
 
 export const router = new VueRouter({
   mode: 'history',
@@ -23,9 +25,12 @@ export const router = new VueRouter({
     {
       path: '/',
       components: {
-        default: Main
+        default: Header
       },
       children: [
+        {path: 'main',
+        component: Main
+        },
         {
           path: 'books',
           component: BookList
@@ -37,9 +42,22 @@ export const router = new VueRouter({
         {
           path: 'quick-recommendations',
           component: QuickRecommendations
+        },
+        {
+          path: 'account', component: QuickRecommendations, name: 'Account',
+          beforeEnter: (to, from, next) => {
+              console.log('user: ' + auth.user.authenticated)
+              console.log(to)
+              if (!auth.user.authenticated) {
+                  next('main')
+              } else {
+                  next('/quick-recommendations')
+              }
+          }
         }
       ]
-    }
+    }, 
+    
   ]
 });
 
@@ -81,4 +99,5 @@ export default new Vue({
   store,
 
   render: h => h('router-view')
-});
+})
+// .$mount('#root');

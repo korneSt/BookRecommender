@@ -1,7 +1,7 @@
 import { router } from '../index.js'
 
-const API_URL = 'http://localhost:3000/'
-const LOGIN_URL = API_URL + 'users/'
+const API_URL = 'http://localhost:3000/api/v1.0/'
+const LOGIN_URL = API_URL + 'login'
 const SIGNUP_URL = API_URL + 'users/'
 
 export default {
@@ -9,32 +9,38 @@ export default {
     user: {
         authenticated: false,
         id: 0,
-        username: localStorage.getItem('username'),
-        sharedBoards: []
+        // username: localStorage.getItem('username'),
     },
 
     login(context, creds, redirect) {
-        context.$http.get('http://localhost:3000/users?userName=' + creds.username + '&password=' + creds.password).then((response) => {
-            console.log(response)
-            if (response.body.length > 0) {
-                this.user.authenticated = true
-                console.log(response.body[0].id)
-                this.user.id = response.body[0].id
-                this.user.username = response.body[0].userName
-                this.user.sharedBoards = response.body[0].sharedBoards
-                localStorage.setItem('id_token', response.body[0].id)
-                localStorage.setItem('username', response.body[0].userName)
-                localStorage.setItem('sharedBoards', response.body[0].sharedBoards)
-                router.push('/dashboard')
+        context.$http.post(LOGIN_URL, "username="+creds.username + "&password=" +creds.password, {
+            headers: {
+                // 'Access-Control-Allow-Origin': '*',
+                // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+                // 'Content-Type':'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+        .then( (response) => {
+            console.log('logged ',response);
+            this.user.authenticated = true
+
+            localStorage.setItem('id_token', response.body.userId)
+            // router.push('/dashboard')
                 // if (redirect) {
                 // router.go(redirect)
                 // }
-            } else {
-                context.error = 'Brak takiego uzytkownika'
-            }
+                
         }, (response) => {
-            console.log(response)
-        });
+            console.log('not logged ',response);
+            context.error = "Brak takiego użytkownika";
+            // if (this.error !== '') {
+                context.$notify.error({
+                  title: 'Error',
+                  message: 'Brak takiego użytkownika'
+                });
+            // }
+        })
     },
 
     signup(context, creds, redirect) {
