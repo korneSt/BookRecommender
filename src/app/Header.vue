@@ -11,10 +11,10 @@
 
   </el-submenu>
   <el-menu-item index="3">{{ $t('header.acc') }}</el-menu-item>
-  <el-menu-item index="4" class="right">
+  <el-menu-item index="4" class="right" v-if="!user.authenticated">
   <el-input  size="small" placeholder="Login" v-model="credentials.username" class="center"></el-input>
   </el-menu-item>
-  <el-menu-item index="5" class="right">
+  <el-menu-item index="5" class="right" v-if="!user.authenticated">
   <el-input  size="small" placeholder="Password" v-model="credentials.password" class="center"></el-input>
   <el-button type="primary" icon="el-icon-edit" v-on:click="submit()"></el-button>
 
@@ -42,11 +42,12 @@ export default {
   },
   data() {
     return {
-       credentials: {
-          username: '',
-          password: ''
-        },
-        error: ''
+      user: auth.user,
+      credentials: {
+        username: '',
+        password: ''
+      },
+      error: ''
     }
   },
   methods: {

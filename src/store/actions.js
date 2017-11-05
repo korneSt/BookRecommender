@@ -31,6 +31,16 @@ export const getMyBooks = ({ commit }) => {
     })
 }
 
+export const addBook = (context, {book}) => {
+    console.log(book);
+    app.$http.post(URL + 'book', book).then( (response) => {
+        console.log(response);
+        context.commit(types.ADD_BOOK, response.body);
+    }, (response) => {
+        console.log(response);
+    })
+}
+
 //BOARDS
 export const addBoard = (context, {board}) => {
     app.$http.post('http://localhost:3000/boards', board).then((response) => {

@@ -12,11 +12,14 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css'
 import auth from './auth'
 import Header from './app/Header.vue';
+import Account from './app/Account.vue';
 
 Vue.use(ElementUI)
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(VueI18n);
+auth.checkAuth()
+
 // Vue.http.headers.common['Access-Control-Allow-Origin'] = '*';
 
 export const router = new VueRouter({
@@ -44,16 +47,17 @@ export const router = new VueRouter({
           component: QuickRecommendations
         },
         {
-          path: 'account', component: QuickRecommendations, name: 'Account',
-          beforeEnter: (to, from, next) => {
-              console.log('user: ' + auth.user.authenticated)
-              console.log(to)
-              if (!auth.user.authenticated) {
-                  next('main')
-              } else {
-                  next('/quick-recommendations')
-              }
-          }
+          path: 'account', component: Account, name: 'Account',
+          // beforeEnter: (to, from, next) => {
+          //     console.log('user: ' + auth.user.authenticated)
+          //     console.log(to)
+          //     if (!auth.user.authenticated) {
+          //         next('main')
+          //     }
+              // } else {
+              //     next('account')
+              // }
+          // }
         }
       ]
     }, 

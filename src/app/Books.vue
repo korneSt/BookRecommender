@@ -14,7 +14,7 @@
   </div>
   </parallax>
 
-<el-dialog :title="selBook && selBook.title" v-model="dialogBookVisible">
+<el-dialog :visible.sync="dialogBookVisible" :title="selBook && selBook.title" v-model="dialogBookVisible">
 <el-row :gutter="20">
   <el-col :span="16">
   <div>Recommendations</div>

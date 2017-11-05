@@ -6,7 +6,8 @@ import * as types from './mutation-types'
 export const state = {
     books: [],
     myBooks: [],
-    recommendedBooks: []
+    recommendedBooks: [],
+    addedBook: {}
 }
 
 export const mutations = {
@@ -18,6 +19,9 @@ export const mutations = {
     },
     [types.GET_QUICK_RECOMM](state, books) {
         state.recommendedBooks = books;
+    },
+    [types.ADD_BOOK](state, book) {
+        state.addedBook = book;
     }
     
 }
