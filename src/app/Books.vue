@@ -1,6 +1,6 @@
 <template>
 <div>
-  <parallax class="parallax" src="/assets/books.jpg" :height="300" :speed="0.2">
+  <!--<parallax class="parallax" src="/assets/books.jpg" :height="300" :speed="0.2"> -->
   <div class="techs-container">
       <div class="new-books" v-for="(b, index) in booksAll"
         @click="dialogBookVisible = true; selBook = b">
@@ -12,7 +12,7 @@
         </el-card>
       </div>
   </div>
-  </parallax>
+ <!-- </parallax> -->
 
 <el-dialog :visible.sync="dialogBookVisible" :title="selBook && selBook.title" v-model="dialogBookVisible">
 <el-row :gutter="20">

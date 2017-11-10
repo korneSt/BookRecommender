@@ -44,7 +44,7 @@
 
 
       <bookdialog v-on:hide="hideDialog()" :sel-book="selBook"
-      :visible="v" @update:visible="val => v = val"></bookdialog>
+      :disp.sync="v"></bookdialog>
   </div>
 
 </template>

@@ -1,5 +1,5 @@
 <template>
-<el-dialog :visible.sync="dialogBookVisible" :title="selBook && selBook.title" v-model="visible"
+<el-dialog :visible.sync="dialogBookVisible" :title="selBook && selBook.title" v-model="disp"
   :before-close="handleCancel">
 <el-row :gutter="20">
   <el-col :span="16">
@@ -39,24 +39,24 @@
 
 export default {
   name: 'BookDialog',
-  props: ['selBook', 'visible'],
+  props: ['selBook', 'disp'],
   data() {
     return {
-    //   dialogBookVisible: this.visible
+      dialogBookVisible: this.visible
     };
   },
   computed: {
-       dialogBookVisible: {
-           get: function() {
-           return this.visible;
-       }
-       }
+      //  dialogBookVisible: {
+      //      get: function() {
+      //      return this.disp;
+      //  }
+      //  }
   },
    methods: {
        handleCancel() {           
         //    this.dialogBookVisible = false;
-           this.$emit('hide');
-          //  this.$emit('update:visible', false)
+          //  this.$emit('hide');
+           this.$emit('update:disp', false)
 
        }
   },
