@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <books-component></books-component>
+  <div id="mybooklist">
+  
+    <!--<books-component></books-component>-->
 
     <el-table
-      :data="books.filter(myBooksFilter)"
+      :data="myBooks"
       border
-      style="width: 100%">
+      size="medium"
+      style="width: 50%">
       <el-table-column
         inline-template
         label="Title"
@@ -28,18 +30,23 @@
           <el-button
             size="small"
             @click="handleAdd($index, row)">
-            Add to my books
+            Edit
           </el-button>
           <el-button
             size="small"
-            type="success"
+            type="danger"
             @click="handleRecommend($index, row)">
-            Recommend
+            Remove
           </el-button>
         </div>
       </el-table-column>
     </el-table>
+
+
+      <bookdialog v-on:hide="hideDialog()" :sel-book="selBook"
+      :visible="v" @update:visible="val => v = val"></bookdialog>
   </div>
+
 </template>
 <script>
 
@@ -49,31 +56,49 @@ import Books from './Books.vue';
 export default {
   name: 'mybooklist',
   components: {
-    'books-component': Books,
+    'books-component': Books
   },
   data() {
     return {
-      
+      selBook: {},
+      v: false
     }
   },
   computed: {
     books () {
-      return this.$store.state.books
+      return this.$store.state.books;
+    },
+    myBooks() {
+      return this.$store.state.myBooks;
     }
   },
   methods: {
     ...mapActions([
       'getMyBooks'
     ]),
-    myBooksFilter: function(book) {
-        if (book.userId == 1)
-          return book;
-      },
+    myBooksFilter(book) {
+      if (book.userId == 1)
+        return book;
+    },
+    handleAdd($index, row) {
+      this.selBook = this.myBooks[$index]; 
+      this.v = true;
+      console.log($index, row);
+    },
+    hideDialog() {
+      this.v = false;
+    }
   },
   mounted: function () {
     this.$nextTick(function () {
-      // this.getAllBooks();
+      this.getMyBooks();
     })
   }
 };
 </script>
+
+<style>
+#mybooklist {
+  padding-left: 1em;
+}
+</style>

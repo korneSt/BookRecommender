@@ -4,6 +4,7 @@ import BookList from './app/BookList.vue';
 import store from './store';
 import MyBooksList from './app/MyBooksList.vue';
 import QuickRecommendations from './app/QuickRecommendations.vue';
+import BookDialog from './app/BookDialog.vue';
 import './index.css';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
@@ -13,11 +14,12 @@ import 'element-ui/lib/theme-default/index.css'
 import auth from './auth'
 import Header from './app/Header.vue';
 import Account from './app/Account.vue';
-
+ 
 Vue.use(ElementUI)
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(VueI18n);
+Vue.component('bookdialog', BookDialog);
 auth.checkAuth()
 
 // Vue.http.headers.common['Access-Control-Allow-Origin'] = '*';

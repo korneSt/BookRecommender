@@ -23,7 +23,7 @@ export const getQuickRecommendation = (context, {bookIds}) => {
 }
 
 export const getMyBooks = ({ commit }) => {
-    app.$http.get(URL + 'books/2').then((response) => {
+    app.$http.get(URL + 'books/' + auth.user.id).then((response) => {
         console.log(response);
     commit(types.GET_MY_BOOKS, response.body);
     }, (response) => {
