@@ -14,7 +14,8 @@ import 'element-ui/lib/theme-default/index.css'
 import auth from './auth'
 import Header from './app/Header.vue';
 import Account from './app/Account.vue';
- 
+window._ = require('lodash');
+
 Vue.use(ElementUI)
 Vue.use(VueRouter);
 Vue.use(VueResource);

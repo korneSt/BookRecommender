@@ -7,7 +7,8 @@ export const state = {
     books: [],
     myBooks: [],
     recommendedBooks: [],
-    addedBook: {}
+    addedBook: {},
+    settings: {}
 }
 
 export const mutations = {
@@ -22,6 +23,9 @@ export const mutations = {
     },
     [types.ADD_BOOK](state, book) {
         state.addedBook = book;
+    },
+    [types.GET_SETTINGS](state, settings) {
+        state.settings = settings
     }
     
 }

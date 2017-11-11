@@ -4,6 +4,13 @@ import auth from '../auth';
 
 const URL = 'http://localhost:3000/api/v1.0/';
 
+export const getSettings = ({commit}) => {
+    app.$http.get(URL + 'settings').then( (response) => {
+        commit(types.GET_SETTINGS, response.body);
+    }, (error) => {
+        console.log(error);
+    })
+}
 
 export const getAllBooks = ({ commit }) => {
     app.$http.get(URL + 'books').then((response) => {

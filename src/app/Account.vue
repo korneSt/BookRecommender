@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="account"> 
     <el-button type="primary" @click="show = !show">
       Add book  
       <i class="el-icon-upload el-icon-right"></i></el-button>
@@ -37,7 +37,24 @@
           </transition>
           </el-col>
       </el-row>
-      <p :model="addedBook"> {{ addedBook.title }}</p>
+      <el-row>
+      <el-col :span="12">
+      <el-tabs type="border-card">
+        <el-tab-pane label="Gatunki">
+          <el-checkbox v-for="v in favGenre" v-model="v.id == 'false'? false: true" >{{ v.value }}</el-checkbox>
+        </el-tab-pane>
+        <el-tab-pane label="Długość">
+          <el-checkbox v-for="v in favLen" v-model="v.id == 'false'? false: true">{{ v.value }}</el-checkbox>
+        </el-tab-pane>
+        <el-tab-pane label="Kategoria wiekowa">
+          <el-checkbox v-for="v in favAge" v-model="v.id == 'false'? false: true">{{ v.value }}</el-checkbox>
+        </el-tab-pane>
+        <el-tab-pane label="Autorzy">
+          <el-checkbox v-for="v in favAuth" v-model="v.id == 'false'? false: true">{{ v.value }}</el-checkbox>
+        </el-tab-pane>
+      </el-tabs>
+      </el-col>
+      </el-row>
   </div>
 </template>
 
@@ -48,6 +65,7 @@ export default {
   name: 'Account',
   data() {
     return {
+      checked: true,
       show: false,
       ruleForm: {
       title: '',
@@ -75,11 +93,24 @@ export default {
     },
     addedBook () {
       return this.$store.state.addedBook
+    },
+    favAuth() {
+      return _.filter(this.$store.state.settings, {name: 'favauthor'});
+    },
+    favLen() {
+      return _.filter(this.$store.state.settings, {name: 'lenght'});
+    },
+    favGenre() {
+      return _.filter(this.$store.state.settings, {name: 'genre'});
+    },
+    favAge() {
+     return  _.filter(this.$store.state.settings, {name: 'age'});
     }
   },
     methods: {
       ...mapActions([
-      'addBook'
+      'addBook',
+      'getSettings'
        ]),
       submitForm(formName) {
         let newBook = {
@@ -108,8 +139,6 @@ export default {
     },
     watch: {
     addedBook: function(newValue, oldValue) {
-      console.log('a',newValue);
-      console.log(this.newBook);
       if(newValue.created === true) {
         this.$notify.success({
           title: 'Success',
@@ -122,6 +151,17 @@ export default {
       });
       }
     }
+    },
+    mounted: function () {
+      this.$nextTick(function () {
+      this.getSettings();
+    })
     }
 };
 </script>
+<style>
+
+#account{
+  padding: 1em;
+}
+</style>
