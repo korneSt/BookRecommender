@@ -4,6 +4,15 @@ import auth from '../auth';
 
 const URL = 'http://localhost:3000/api/v1.0/';
 
+
+export const getUserRecommendation = ({commit}) => {
+    app.$http.get(URL + 'recommendationUser?userId='+ auth.user.id + 'numberOfResults=5').then ((response) => {
+        commit(types.GET_USER_RECOMMENDATIONS, response.body);
+    }, (error) => {
+        console.log(error);
+    })
+}
+
 export const getSettings = ({commit}) => {
     app.$http.get(URL + 'settings').then( (response) => {
         commit(types.GET_SETTINGS, response.body);
